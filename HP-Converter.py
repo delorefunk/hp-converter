@@ -44,7 +44,7 @@ drivetrain_loss = {
 
 units = ["HP", "BHP", "WHP", "PS", "KW"]
 
-# Function to get drivetrain loss
+# Function to factor in drivetrain loss
 def get_drivetrain_loss(amount, conversion_type):
     drivetrain = input("Select your drivetrain (FWD, RWD, AWD): ").strip().upper()
     
@@ -52,10 +52,10 @@ def get_drivetrain_loss(amount, conversion_type):
         loss_factor = drivetrain_loss[drivetrain]
         if conversion_type == "WHP_to_X":
             return amount / (1 - loss_factor)
-        else:  # X_to_WHP
+        else:  # Others_to_WHP
             return amount * (1 - loss_factor)
     else:
-        print("Invalid drivetrain selected.")
+        print("Invalid drivetrain selection.")
         return None
 
 # Function to convert power
